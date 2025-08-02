@@ -1,11 +1,11 @@
 import React from 'react';
-import Star from './Star';
+import Star from '../Stars/Star';
 
 interface StarsProps {
-  count: number;
+  count?: number;
 }
 
-const Stars: React.FC<StarsProps> = ({ count }) => {
+const Stars: React.FC<StarsProps> = ({ count = 0 }) => {
   if (typeof count !== 'number' || count < 1 || count > 5) {
     return null;
   }
@@ -13,9 +13,7 @@ const Stars: React.FC<StarsProps> = ({ count }) => {
   return (
     <ul className="card-body-stars u-clearfix">
       {Array.from({ length: count }, (_, i) => (
-        <li key={i}>
-          <Star />
-        </li>
+        <Star key={i} />
       ))}
     </ul>
   );
